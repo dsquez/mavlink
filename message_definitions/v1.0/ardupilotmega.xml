@@ -1656,8 +1656,7 @@
       <field type="uint16_t[4]" name="rpm" units="rpm">RPM (eRPM).</field>
       <field type="uint16_t[4]" name="count">count of telemetry packets received (wraps at 65535).</field>
     </message>
-
-
+    
     <!-- BEGINNING TAA MESSAGES -->
     <message id="20001" name="TAA_ACK">
       <description>Acknowledgement message. Message received and desired action was carried out.</description>
