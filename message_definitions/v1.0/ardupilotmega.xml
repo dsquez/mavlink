@@ -1700,7 +1700,7 @@
       <field type="float" name="altitude_msl" units="m">MSL altitude from gps.</field>
       <field type="float" name="altitude_hae" units="m">Meters above ellipsoid (from gps).</field>
       <field type="float" name="heading_angle" units="deg">Heading reading from compass.</field>
-      <field type="unit32_t" name="seconds_since_last_alert" units="s">Seconds since last alert.</field>
+      <field type="uint32_t" name="seconds_since_last_alert" units="s">Seconds since last alert.</field>
     </message>
     <message id="20202" name="TAA_GET_PARAMETER_REPLY">
       <field type="uint16_t" name="parameter_list_version">Identifier of parameter list version.</field>
@@ -1713,7 +1713,7 @@
       <field type="uint64_t" name="seconds" units="s">Second field of timestamp.</field>
       <field type="uint32_t" name="nanoseconds" units="ns">Nanosecond field of timestamp.</field>
       <field type="uint8_t" name="volume">Negative dB of volume of bark detected.</field>
-      <field type="uint8_t" name="confidence" units="%"V>Confidence value.</field>
+      <field type="uint8_t" name="confidence" units="%">Confidence value.</field>
     </message>
   </messages>
 </mavlink>
