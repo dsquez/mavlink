@@ -1656,5 +1656,64 @@
       <field type="uint16_t[4]" name="rpm" units="rpm">RPM (eRPM).</field>
       <field type="uint16_t[4]" name="count">count of telemetry packets received (wraps at 65535).</field>
     </message>
+    
+    <!-- BEGINNING TAA MESSAGES -->
+    <message id="20001" name="TAA_ACK">
+      <description>Acknowledgement message. Message received and desired action was carried out.</description>
+      <field type="uint16_t" name="message_type">Type of packet being acknowledged</field>
+      <field type="uint16_t" name="sequence_response">Replies with the sequence number of the packet it is acknowledging</field>
+    </message>
+    <message id="20002" name="TAA_NACK">
+      <description>Not acknowledgement message</description>
+      <field type="uint16_t" name="message_type">Type of packet not being acknowledged.</field>
+      <field type="uint16_t" name="sequence_response">Sequence number of packet not being acknowledged.</field>
+      <field type="uint32_t" name="error_type">why the message is being rejected.</field>
+    </message>
+    <message id="20101" name="TAA_DRONE_TELEMETRY">
+      <field type="uint16_t" name="sequence">Incremented each time a drone hearbeat is sent.</field>
+      <field type="uint8_t" name="version">Version number of telemetry protocol.</field>
+      <field type="uint64_t" name="seconds" units="s">Seconds field of timestamp.</field>
+      <field type="uint32_t" name="nanoseconds" units="ns">Nanoseconds field of timestamp.</field>
+    </message>
+    <message id="20102" name="TAA_GET_PARAMETERS_FROM_VEST">
+      <field type="uint16_t" name="parameter_list_version">Identifier of parameter list version.</field>
+      <field type="uint16_t" name="parameter_index">Parameter index to get.</field>
+    </message>
+    <message id="20103" name="TAA_SET_PARAMETERS_ON_VEST">
+      <field type="uint16_t" name="parameter_list_version">Identifier of parameter list version.</field>
+      <field type="uint16_t" name="parameter_index">Parameter index to set.</field>
+      <field type="uint32_t" name="parameter_value">Value to set.</field>
+      <field type="uint8_t" name="interpretation_type">Interpret value as 0=uint32, 1=int32, 2=float32.</field>
+    </message>
+    <message id="20104" name="TAA_PLAY_SOUND_ON_VEST">
+      <field type="uint16_t" name="sound_index">Index of sound to play on vest.</field>
+      <field type="uint32_t" name="sequence">Increment each time you send this command.</field>
+      <field type="uint8_t" name="volume_level">0 is default. otherwise, set volume level.</field>
+    </message>
+    <message id="20201" name="TAA_CANINE_TELEMETRY">
+      <field type="uint16_t" name="sequence">Incremented each time packet is sent.</field>
+      <field type="uint8_t" name="version">Version number of protocol.</field>
+      <field type="uint64_t" name="seconds" units="s">Second field of timestamp.</field>
+      <field type="uint32_t" name="nanoseconds" units="ns">Nanoseconds field of timestamp.</field>
+      <field type="double" name="gps_lat" units="deg">Dog vest latitude.</field>
+      <field type="double" name="gps_lon" units="deg">Dog vest longitude.</field>
+      <field type="float" name="altitude_msl" units="m">MSL altitude from gps.</field>
+      <field type="float" name="altitude_hae" units="m">Meters above ellipsoid (from gps).</field>
+      <field type="float" name="heading_angle" units="deg">Heading reading from compass.</field>
+      <field type="unit32_t" name="seconds_since_last_alert" units="s">Seconds since last alert.</field>
+    </message>
+    <message id="20202" name="TAA_GET_PARAMETER_REPLY">
+      <field type="uint16_t" name="parameter_list_version">Identifier of parameter list version.</field>
+      <field type="uint16_t" name="parameter_index">Parameter Index.</field>
+      <field type="uint32_t" name="parameter_value">Value of vest parameter.</field>
+    </message>
+    <message id="20203" name="TAA_ALERT_DETECTED">
+      <field type="uint16_t" name="sequence">Sequence number of alert.</field>
+      <field type="uint16_t" name="alert_count">Number of alert barks detected.</field>
+      <field type="uint64_t" name="seconds" units="s">Second field of timestamp.</field>
+      <field type="uint32_t" name="nanoseconds" units="ns">Nanosecond field of timestamp.</field>
+      <field type="uint8_t" name="volume">Negative dB of volume of bark detected.</field>
+      <field type="uint8_t" name="confidence" units="%"V>Confidence value.</field>
+    </message>
   </messages>
 </mavlink>
